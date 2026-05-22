@@ -1,0 +1,133 @@
+/* Reset dasar dan pengaturan font */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #e0e0e0; /* Teks terang */
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    
+    /* Background Dark dengan Gradient Sudut */
+    background-color: #0a0a0a;
+    background-image:
+        radial-gradient(circle at top right, rgba(255, 0, 0, 0.15), transparent 400px),
+        radial-gradient(circle at bottom left, rgba(0, 0, 255, 0.15), transparent 400px);
+    background-attachment: fixed;
+}
+
+/* Efek Bintang Jatuh */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+    transform: rotate(45deg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    top: -50px; /* Posisi awal Y untuk bintang pertama */
+    left: 0; /* Posisi awal X untuk bintang pertama */
+    width: 100px; /* Panjang ekor bintang pertama */
+    animation: shootingStar 15s ease-in-out infinite; /* Durasi lebih panjang untuk efek tidak sering */
+}
+
+body::after {
+    top: -150px; /* Posisi awal Y yang berbeda untuk bintang kedua */
+    left: 30%; /* Posisi awal X yang berbeda untuk bintang kedua */
+    width: 80px; /* Panjang ekor bintang kedua */
+    animation: shootingStar 18s ease-in-out infinite 7s; /* Durasi dan delay yang berbeda untuk bintang kedua */
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: rotate(45deg) translateX(-180vw); /* Mulai jauh di kiri atas viewport */
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0; /* Bintang mulai memudar */
+    }
+    100% {
+        transform: rotate(45deg) translateX(180vw); /* Berakhir jauh di kanan bawah viewport */
+        opacity: 0;
+    }
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #bbbbbb;
+    margin-top: 10px;
+}
+
+/* Bagian Section (Tentang Saya & Keahlian) */
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-left: 4px solid #4a90e2; /* Aksen warna biru */
+    padding-left: 15px;
+}
+
+/* List Keahlian */
+.skill-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+}
+
+.skill-list li {
+    background-color: #1e1e1e;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: default;
+    font-weight: 500;
+}
+
+.skill-list li:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #4a90e2; /* Warna biru muda saat hover */
+    color: #ffffff;
+    border-color: #6ab0ff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 0.9rem;
+    color: #666666;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
